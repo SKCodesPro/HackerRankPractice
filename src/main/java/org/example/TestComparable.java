@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class TestComparable {
@@ -18,7 +19,7 @@ public class TestComparable {
         empList.forEach(emp -> System.out.println(emp.getName()));
         Collections.sort(empList);
         empList.forEach(emp -> System.out.println(emp.getName()));
-
-
+        empList.sort(new EmployeeComparator());
+        empList.forEach(emp -> System.out.println(emp.getName()));
     }
 }

@@ -1,9 +1,5 @@
 package org.example;
 
-import com.sun.source.tree.BreakTree;
-
-import javax.swing.*;
-
 public class LinkedList {
     Node head;
     static class Node {
@@ -49,6 +45,19 @@ public class LinkedList {
         }
         return linkedList;
     }
+    public  LinkedList reverse(LinkedList llist){
+        Node prev = null;
+        Node current = llist.head;
+        Node next = null;
+        while (current != null){
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        llist.head  = prev;
+        return  llist;
+    }
     public static void main(String[] args) {
         LinkedList linkedList = new LinkedList();
         linkedList.insert(linkedList, 1);
@@ -57,8 +66,20 @@ public class LinkedList {
         linkedList.insert(linkedList, 4);
         linkedList.insert(linkedList, 5);
         linkedList.displayList(linkedList);
-        linkedList.deleteByKey(linkedList, 2);
+        linkedList.reverse(linkedList);
         linkedList.displayList(linkedList);
+    }
+
+    private int size(LinkedList linkedList) {
+        int count = 0;
+        Node currentNode = linkedList.head;
+
+        while(currentNode != null){
+            count += 1;
+            currentNode = currentNode.next;
+        }
+        System.out.println(count);
+        return  count;
 
     }
 
